@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+pageguitest1.py

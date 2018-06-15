@@ -1,0 +1,17 @@
+#! python3
+
+import pyautogui
+import time
+
+# def commentAfterDelay():
+#     pyautogui.click(100, 100)
+#     pyautogui.typewrite('In IDLE, Alt-3 comments out a line.')
+#     time.sleep(2)
+#     pyautogui.hotkey('alt', '3')
+
+time.sleep(5)
+pyautogui.typewrite('line1')
+pyautogui.press('\t')
+pyautogui.typewrite('line2')
+pyautogui.press('\t')
+pyautogui.typewrite('line3')
