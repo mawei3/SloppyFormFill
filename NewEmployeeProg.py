@@ -11,6 +11,7 @@ splitEmail = rawEmail.split(sep='\n')
 splitEmail = [i.strip() for i in splitEmail]
 listEmaila = list(filter(None, splitEmail))
 
+# Deletes everything before MUID
 listEmailb = copy.copy(listEmaila)
 for line in listEmaila:
     if line != 'muid':
@@ -22,4 +23,4 @@ listEmaila = copy.copy(listEmailb)
 emailDict = dict(zip(listEmaila[::2], listEmaila[1::2]))  # turn list into dictionary
 
 print(emailDict)
-# pprint  # pprint for testing
+# pprint(emailDict)  # pprint for testing
