@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! python3
 
 from tkinter import *
 from tkinter import ttk
