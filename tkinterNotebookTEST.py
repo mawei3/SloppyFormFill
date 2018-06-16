@@ -2,7 +2,26 @@
 
 from tkinter import *
 from tkinter import ttk
+import pyperclip
+import keyboard
+import tkinter
+import copy
 
+rawEmail = str(pyperclip.paste())
+splitEmail = rawEmail.split(sep='\n')
+splitEmail = [i.strip() for i in splitEmail]
+listEmaila = list(filter(None, splitEmail))
+
+# Deletes everything before MUID
+listEmailb = copy.copy(listEmaila)
+for line in listEmaila:
+    if line != 'muid':
+        listEmailb.remove(line)
+    else:
+        break
+listEmaila = copy.copy(listEmailb)
+
+emailDict = dict(zip(listEmaila[::2], listEmaila[1::2]))  # turn list into dictionary
 
 main = Tk()
 main.title('Form Filler 5000')
@@ -32,6 +51,12 @@ for i in labelLoop:                 # Print all labels for form
     labelLoop.config(font=labelfont)
     labelLoop.config(borderwidth=1, relief="solid")
     labelLoop.pack(side='top', anchor="w")
+
+for i in emailDict:                 # Print all labels for form
+    valueLoop = Label(page1, text=(emailDict[i]), width='22')
+    valueLoop.config(font=labelfont)
+    valueLoop.config(borderwidth=1, relief="solid")
+    valueLoop.pack(anchor="w")
 
 pasteFill = Button(page1, text='Form Fill Xtreme')
 pasteFill.pack(side='bottom')
