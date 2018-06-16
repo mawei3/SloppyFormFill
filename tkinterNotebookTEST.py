@@ -45,23 +45,57 @@ nb.grid(row=0, column=0, columnspan=85, rowspan=80, sticky='NESW')
 page1 = ttk.Frame(nb)
 nb.add(page1, text='Submit Request')
 labelLoop = ['First Name', 'Middle Initial', 'Last Name', 'MUID', 'Date of Birth', 'Preffered Display Name', 'Personal Email', 'Department Name', 'Campus', 'Building', 'Room or Office', 'Employee Type', 'Job Title', 'Supervisor', 'Start Date', 'Phone Required', 'Account', 'Use Existing', 'Existing Extension', 'Phone Model', 'Long Distance', 'International', 'Voicemail', 'Call Forward', 'Canvas', 'MyMercer', 'Campus Nexus', 'Nexus Copy From', 'CampusVue', 'Network Drive', 'Network Path', 'VPN', 'VPN Type', '25 Live', 'Computer Requirement', 'Existing RT', 'Additonal Notes']
-labelfont = ('ariel', 11, 'bold')   # Change Font
-for i in labelLoop:                 # Print all labels for form
-    labelLoop = Label(page1, text=(i + ':').rjust(35), width='22')
-    labelLoop.config(font=labelfont)
-    labelLoop.config(borderwidth=1, relief="solid")
-    labelLoop.pack(side='top', anchor="w")
+labelfont = ('ariel', 12, 'bold')   # Change Font
 
-for i in emailDict:                 # Print all labels for form
-    valueLoop = Label(page1, text=(emailDict[i]), width='22')
-    valueLoop.config(font=labelfont)
-    valueLoop.config(borderwidth=1, relief="solid")
-    valueLoop.pack(anchor="w")
+labelIndex = 0
+for i in labelLoop:
+    Label(page1, text=i + ':', font=labelfont).grid(row=labelIndex, column=0, sticky=E)
+    labelIndex += 1
 
-pasteFill = Button(page1, text='Form Fill Xtreme')
-pasteFill.pack(side='bottom')
-grabClipboard = Button(page1, text='Grab Clipboard')
-grabClipboard.pack(side='bottom')
+# Populate 2nd column
+Label(page1, text=emailDict.get('first_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=0, column=1, sticky=W)
+Label(page1, text=emailDict.get('middle_initial'), relief=SUNKEN, width=20, justify=LEFT).grid(row=1, column=1, sticky=W)
+Label(page1, text=emailDict.get('last_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=2, column=1, sticky=W)
+Label(page1, text=emailDict.get('muid'), relief=SUNKEN, width=20, justify=LEFT).grid(row=3, column=1, sticky=W)
+Label(page1, text=emailDict.get('date_of_birth'), relief=SUNKEN, width=20, justify=LEFT).grid(row=4, column=1, sticky=W)
+Label(page1, text=emailDict.get('display_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=5, column=1, sticky=W)
+Label(page1, text=emailDict.get('personal_email'), relief=SUNKEN, width=20, justify=LEFT).grid(row=6, column=1, sticky=W)
+Label(page1, text=emailDict.get('department'), relief=SUNKEN, width=20, justify=LEFT).grid(row=7, column=1, sticky=W)
+Label(page1, text=emailDict.get('campus'), relief=SUNKEN, width=20, justify=LEFT).grid(row=8, column=1, sticky=W)
+Label(page1, text=emailDict.get('building'), relief=SUNKEN, width=20, justify=LEFT).grid(row=9, column=1, sticky=W)
+Label(page1, text=emailDict.get('office_or_room_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=10, column=1, sticky=W)
+Label(page1, text=emailDict.get('employee_type'), relief=SUNKEN, width=20, justify=LEFT).grid(row=11, column=1, sticky=W)
+Label(page1, text=emailDict.get('employee_title'), relief=SUNKEN, width=20, justify=LEFT).grid(row=12, column=1, sticky=W)
+Label(page1, text=emailDict.get('supervisor'), relief=SUNKEN, width=20, justify=LEFT).grid(row=13, column=1, sticky=W)
+Label(page1, text=emailDict.get('start_date'), relief=SUNKEN, width=20, justify=LEFT).grid(row=14, column=1, sticky=W)
+Label(page1, text=emailDict.get('needs_telephone_service'), relief=SUNKEN, width=20, justify=LEFT).grid(row=15, column=1, sticky=W)
+Label(page1, text=emailDict.get('account_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=16, column=1, sticky=W)
+Label(page1, text=emailDict.get('using_existing_ext'), relief=SUNKEN, width=20, justify=LEFT).grid(row=17, column=1, sticky=W)
+Label(page1, text=emailDict.get('existing_telephone_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=18, column=1, sticky=W)
+Label(page1, text=emailDict.get('phone_model'), relief=SUNKEN, width=20, justify=LEFT).grid(row=19, column=1, sticky=W)
+Label(page1, text=emailDict.get('long_distance_code'), relief=SUNKEN, width=20, justify=LEFT).grid(row=20, column=1, sticky=W)
+Label(page1, text=emailDict.get('international_calling'), relief=SUNKEN, width=20, justify=LEFT).grid(row=21, column=1, sticky=W)
+Label(page1, text=emailDict.get('voice_mail'), relief=SUNKEN, width=20, justify=LEFT).grid(row=22, column=1, sticky=W)
+Label(page1, text=emailDict.get('call_forwarding'), relief=SUNKEN, width=20, justify=LEFT).grid(row=23, column=1, sticky=W)
+Label(page1, text=emailDict.get('canvas_unused'), relief=SUNKEN, width=20, justify=LEFT).grid(row=24, column=1, sticky=W)
+Label(page1, text=emailDict.get('mymercer'), relief=SUNKEN, width=20, justify=LEFT).grid(row=25, column=1, sticky=W)
+Label(page1, text=emailDict.get('CampusNexus_student'), relief=SUNKEN, width=20, justify=LEFT).grid(row=26, column=1, sticky=W)
+Label(page1, text=emailDict.get('CampusNexus_student_user_to_copy'), relief=SUNKEN, width=20, justify=LEFT).grid(row=27, column=1, sticky=W)
+Label(page1, text=emailDict.get('campusvue_finance'), relief=SUNKEN, width=20, justify=LEFT).grid(row=28, column=1, sticky=W)
+Label(page1, text=emailDict.get('shared_folder_access'), relief=SUNKEN, width=20, justify=LEFT).grid(row=29, column=1, sticky=W)
+Label(page1, text=emailDict.get('name_of_the_share'), relief=SUNKEN, width=20, justify=LEFT).grid(row=30, column=1, sticky=W)
+Label(page1, text=emailDict.get('vpn'), relief=SUNKEN, width=20, justify=LEFT).grid(row=31, column=1, sticky=W)
+Label(page1, text=emailDict.get('employee_type'), relief=SUNKEN, width=20, justify=LEFT).grid(row=32, column=1, sticky=W)
+Label(page1, text=emailDict.get('25live_access'), relief=SUNKEN, width=20, justify=LEFT).grid(row=33, column=1, sticky=W)
+Label(page1, text=emailDict.get('computer_status'), relief=SUNKEN, width=20, justify=LEFT).grid(row=34, column=1, sticky=W)
+Label(page1, text=emailDict.get('existing_computer_RT_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=35, column=1, sticky=W)
+Label(page1, text=emailDict.get('additional_notes'), relief=SUNKEN, width=20, justify=LEFT).grid(row=36, column=1, sticky=W)
+
+
+# pasteFill = Button(page1, text='Form Fill Xtreme')
+# pasteFill.pack(side='bottom')
+# grabClipboard = Button(page1, text='Grab Clipboard')
+# grabClipboard.pack(side='bottom')
 
 # Adds tab 2 of the notebook
 page2 = ttk.Frame(nb)

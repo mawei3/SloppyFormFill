@@ -22,5 +22,5 @@ listEmaila = copy.copy(listEmailb)
 
 emailDict = dict(zip(listEmaila[::2], listEmaila[1::2]))  # turn list into dictionary
 
-# print(emailDict)
-pprint(emailDict)  # pprint for testing
+print(emailDict)
+# pprint(emailDict)  # pprint for testing
