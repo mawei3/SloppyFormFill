@@ -3,8 +3,7 @@
 from tkinter import *
 from tkinter import ttk
 import pyperclip
-import keyboard
-import tkinter
+import pyautogui
 import copy
 
 rawEmail = str(pyperclip.paste())
@@ -50,6 +49,7 @@ labelfont = ('ariel', 12, 'bold')   # Change Font
 labelIndex = 0
 for i in labelLoop:
     Label(page1, text=i + ':', font=labelfont).grid(row=labelIndex, column=0, sticky=E)
+    Label(page1, text=' ', relief=SUNKEN, width=20, justify=LEFT).grid(row=0, column=2, sticky=W)
     labelIndex += 1
 
 # Populate 2nd column
@@ -91,7 +91,12 @@ Label(page1, text=emailDict.get('computer_status'), relief=SUNKEN, width=20, jus
 Label(page1, text=emailDict.get('existing_computer_RT_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=35, column=1, sticky=W)
 Label(page1, text=emailDict.get('additional_notes'), relief=SUNKEN, width=20, justify=LEFT).grid(row=36, column=1, sticky=W)
 
+Label(page1, text='  ').grid(row=0, column=3, columnspan=36)
 
+Label(page1, text='Paste to Request').grid(row=10, column=4)
+Label(page1, text='Paste to Details Tab').grid(row=12, column=4)
+Label(page1, text='Status').grid(row=14, column=4)
+Label(page1, text='CountDown Here').grid(row=16, column=4)
 # pasteFill = Button(page1, text='Form Fill Xtreme')
 # pasteFill.pack(side='bottom')
 # grabClipboard = Button(page1, text='Grab Clipboard')
