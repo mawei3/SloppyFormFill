@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 pageguitest1.py
 tkinterNotebookTESTcopy.py
+testcountDown
