@@ -5,6 +5,7 @@ from tkinter import ttk
 import pyperclip
 import pyautogui
 import copy
+import time
 
 
 # Function parses email by removing unwanted lines and turns it into dictionary(emailDict)
@@ -26,68 +27,56 @@ def parseEmail():
 
     emailDict = dict(zip(listEmaila[::2], listEmaila[1::2]))  # turn list into dictionary
 
-
-# Creates GUI element from list labelLoop
-def labelFuction():
-    labelLoop = ['First Name', 'Middle Initial', 'Last Name', 'MUID', 'Date of Birth', 'Preffered Display Name', 'Personal Email', 'Department Name', 'Campus', 'Building', 'Room or Office', 'Employee Type', 'Job Title', 'Supervisor', 'Start Date', 'Phone Required', 'Account', 'Use Existing', 'Existing Extension', 'Phone Model', 'Long Distance', 'International', 'Voicemail', 'Call Forward', 'Canvas', 'MyMercer', 'Campus Nexus', 'Nexus Copy From', 'CampusVue', 'Network Drive', 'Network Path', 'VPN', 'VPN Type', '25 Live', 'Computer Requirement', 'Existing RT', 'Additonal Notes']
-    labelfont = ('ariel', 12, 'bold')   # Change Font
-
-    labelIndex = 0
-
-    for i in labelLoop:
-        Label(formFrame, text=i + ':', font=labelfont).grid(row=labelIndex, column=0, sticky=E)
-        Label(formFrame, text=' ', relief=SUNKEN, width=20, justify=LEFT).grid(row=labelIndex, column=1, sticky=W)
-        labelIndex += 1
-
-
-# Creates GUI element from parsed email
-def fillParsed():
     # Populate 2nd column
-    Label(page1, text=emailDict.get('first_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=0, column=1, sticky=W)
-    Label(page1, text=emailDict.get('middle_initial'), relief=SUNKEN, width=20, justify=LEFT).grid(row=1, column=1, sticky=W)
-    Label(page1, text=emailDict.get('last_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=2, column=1, sticky=W)
-    Label(page1, text=emailDict.get('muid'), relief=SUNKEN, width=20, justify=LEFT).grid(row=3, column=1, sticky=W)
-    Label(page1, text=emailDict.get('date_of_birth'), relief=SUNKEN, width=20, justify=LEFT).grid(row=4, column=1, sticky=W)
-    Label(page1, text=emailDict.get('display_name'), relief=SUNKEN, width=20, justify=LEFT).grid(row=5, column=1, sticky=W)
-    Label(page1, text=emailDict.get('personal_email'), relief=SUNKEN, width=20, justify=LEFT).grid(row=6, column=1, sticky=W)
-    Label(page1, text=emailDict.get('department'), relief=SUNKEN, width=20, justify=LEFT).grid(row=7, column=1, sticky=W)
-    Label(page1, text=emailDict.get('campus'), relief=SUNKEN, width=20, justify=LEFT).grid(row=8, column=1, sticky=W)
-    Label(page1, text=emailDict.get('building'), relief=SUNKEN, width=20, justify=LEFT).grid(row=9, column=1, sticky=W)
-    Label(page1, text=emailDict.get('office_or_room_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=10, column=1, sticky=W)
-    Label(page1, text=emailDict.get('employee_type'), relief=SUNKEN, width=20, justify=LEFT).grid(row=11, column=1, sticky=W)
-    Label(page1, text=emailDict.get('employee_title'), relief=SUNKEN, width=20, justify=LEFT).grid(row=12, column=1, sticky=W)
-    Label(page1, text=emailDict.get('supervisor'), relief=SUNKEN, width=20, justify=LEFT).grid(row=13, column=1, sticky=W)
-    Label(page1, text=emailDict.get('start_date'), relief=SUNKEN, width=20, justify=LEFT).grid(row=14, column=1, sticky=W)
-    Label(page1, text=emailDict.get('needs_telephone_service'), relief=SUNKEN, width=20, justify=LEFT).grid(row=15, column=1, sticky=W)
-    Label(page1, text=emailDict.get('account_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=16, column=1, sticky=W)
-    Label(page1, text=emailDict.get('using_existing_ext'), relief=SUNKEN, width=20, justify=LEFT).grid(row=17, column=1, sticky=W)
-    Label(page1, text=emailDict.get('existing_telephone_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=18, column=1, sticky=W)
-    Label(page1, text=emailDict.get('phone_model'), relief=SUNKEN, width=20, justify=LEFT).grid(row=19, column=1, sticky=W)
-    Label(page1, text=emailDict.get('long_distance_code'), relief=SUNKEN, width=20, justify=LEFT).grid(row=20, column=1, sticky=W)
-    Label(page1, text=emailDict.get('international_calling'), relief=SUNKEN, width=20, justify=LEFT).grid(row=21, column=1, sticky=W)
-    Label(page1, text=emailDict.get('voice_mail'), relief=SUNKEN, width=20, justify=LEFT).grid(row=22, column=1, sticky=W)
-    Label(page1, text=emailDict.get('call_forwarding'), relief=SUNKEN, width=20, justify=LEFT).grid(row=23, column=1, sticky=W)
-    Label(page1, text=emailDict.get('canvas_unused'), relief=SUNKEN, width=20, justify=LEFT).grid(row=24, column=1, sticky=W)
-    Label(page1, text=emailDict.get('mymercer'), relief=SUNKEN, width=20, justify=LEFT).grid(row=25, column=1, sticky=W)
-    Label(page1, text=emailDict.get('CampusNexus_student'), relief=SUNKEN, width=20, justify=LEFT).grid(row=26, column=1, sticky=W)
-    Label(page1, text=emailDict.get('CampusNexus_student_user_to_copy'), relief=SUNKEN, width=20, justify=LEFT).grid(row=27, column=1, sticky=W)
-    Label(page1, text=emailDict.get('campusvue_finance'), relief=SUNKEN, width=20, justify=LEFT).grid(row=28, column=1, sticky=W)
-    Label(page1, text=emailDict.get('shared_folder_access'), relief=SUNKEN, width=20, justify=LEFT).grid(row=29, column=1, sticky=W)
-    Label(page1, text=emailDict.get('name_of_the_share'), relief=SUNKEN, width=20, justify=LEFT).grid(row=30, column=1, sticky=W)
-    Label(page1, text=emailDict.get('vpn'), relief=SUNKEN, width=20, justify=LEFT).grid(row=31, column=1, sticky=W)
-    Label(page1, text=emailDict.get('employee_type'), relief=SUNKEN, width=20, justify=LEFT).grid(row=32, column=1, sticky=W)
-    Label(page1, text=emailDict.get('25live_access'), relief=SUNKEN, width=20, justify=LEFT).grid(row=33, column=1, sticky=W)
-    Label(page1, text=emailDict.get('computer_status'), relief=SUNKEN, width=20, justify=LEFT).grid(row=34, column=1, sticky=W)
-    Label(page1, text=emailDict.get('existing_computer_RT_number'), relief=SUNKEN, width=20, justify=LEFT).grid(row=35, column=1, sticky=W)
-    Label(page1, text=emailDict.get('additional_notes'), relief=SUNKEN, width=20, justify=LEFT).grid(row=36, column=1, sticky=W)
+    treeview.delete(*treeview.get_children())
+    keyIndex = 0
+    for item in keyList:
+        treeview.insert('', 'end', text=item, values=emailDict.get(item))
+        keyIndex += 1
 
-    Label(page1, text='  ').grid(row=0, column=3, columnspan=36)
+    # treeview.insert('', '0', text='first_name', values=emailDict.get('first_name'))
+    # treeview.insert('', '1', values=emailDict.get('middle_initial'))
+    # treeview.insert('', '2', values=emailDict.get('last_name'))
+    # treeview.insert('', '3', values=emailDict.get('muid'))
+    # treeview.insert('', '4', values=emailDict.get('date_of_birth'))
+    # treeview.insert('', '5', values=emailDict.get('display_name'))
+    # treeview.insert('', '6', values=emailDict.get('personal_email'))
+    # treeview.insert('', '7', values=emailDict.get('department'))
+    # treeview.insert('', '8', values=emailDict.get('campus'))
+    # treeview.insert('', '9', values=emailDict.get('building'))
+    # treeview.insert('', '10', values=emailDict.get('office_or_room_number'))
+    # treeview.insert('', '11', values=emailDict.get('employee_type'))
+    # treeview.insert('', '12', values=emailDict.get('employee_title'))
+    # treeview.insert('', '13', values=emailDict.get('supervisor'))
+    # treeview.insert('', '14', values=emailDict.get('start_date'))
+    # treeview.insert('', '15', values=emailDict.get('needs_telephone_service'))
+    # treeview.insert('', '16', values=emailDict.get('account_number'))
+    # treeview.insert('', '17', values=emailDict.get('using_existing_ext'))
+    # treeview.insert('', '18', values=emailDict.get('existing_telephone_number'))
+    # treeview.insert('', '19', values=emailDict.get('phone_model'))
+    # treeview.insert('', '20', values=emailDict.get('long_distance_code'))
+    # treeview.insert('', '21', values=emailDict.get('international_calling'))
+    # treeview.insert('', '22', values=emailDict.get('voice_mail'))
+    # treeview.insert('', '24', values=emailDict.get('call_forwarding'))
+    # treeview.insert('', '25', values=emailDict.get('canvas_unused'))
+    # treeview.insert('', '26', values=emailDict.get('mymercer'))
+    # treeview.insert('', '27', values=emailDict.get('CampusNexus_student'))
+    # treeview.insert('', '28', values=emailDict.get('CampusNexus_student_user_to_copy'))
+    # treeview.insert('', '29', values=emailDict.get('campusvue_finance'))
+    # treeview.insert('', '30', values=emailDict.get('shared_folder_access'))
+    # treeview.insert('', '31', values=emailDict.get('name_of_the_share'))
+    # treeview.insert('', '32', values=emailDict.get('vpn'))
+    # treeview.insert('', '33', values=emailDict.get('employee_type'))
+    # treeview.insert('', '34', values=emailDict.get('25live_access'))
+    # treeview.insert('', '35', values=emailDict.get('computer_status'))
+    # treeview.insert('', '36', values=emailDict.get('existing_computer_RT_number'))
+    # treeview.insert('', '37', values=emailDict.get('additional_notes'))
 
 
 # GUI Starts here
 main = Tk()
 main.title('Form Filler 5000')
-main.geometry('500x800')
+main.geometry('480x800')
 
 
 # gives weight to the cells in the grid
@@ -105,47 +94,55 @@ nb.grid(row=0, column=0, columnspan=85, rowspan=80, sticky='NESW')
 
 # Adds tab 1 of the notebook
 page1 = ttk.Frame(nb)
-nb.add(page1, text='Submit Request')
+nb.add(page1, text='New Employee')
 
-page1Frame = Frame(page1, bg='blue', width=300, height=300)
-page1Frame.grid(sticky=NW)
+# Create Button To Copy From Clipboard
+pullDataFrame = Frame(page1)
+pullDataFrame.grid(row=0)
+fillFormButton = Button(pullDataFrame, text='Copy From Clipboard', width=46, command=parseEmail)
+fillFormButton.grid(row=0)
 
-# Add Canvas to formFrame
-formCanvas = Canvas(page1Frame, bg='orange', confine=True, scrollregion=(0, 0, 0, 2000))
-formFrame = Frame(formCanvas)
-formFrame.grid(sticky=NW)
 
-vsbar = Scrollbar(page1Frame, orient=VERTICAL, command=formCanvas.yview)
-formCanvas.configure(yscrollcommand=vsbar.set)
+# Create Treeview for keys and values
+treeview = ttk.Treeview(page1)
+treeview.grid(row=1)
+treeview.config(height=30)
+treeview.column('#0', width=230,)
+treeview.heading('#0', text='Items')
+treeview.config(columns=('values'))
+treeview.column('values', width=230)
+treeview.heading('values', text='Values')
 
-formCanvas.grid(row=0, column=0, sticky=NW)
-# formCanvas.create_window((0, 0), window=formFrame, anchor=NW)
-# formFrame.bind(labelFuction())
-vsbar.grid(row=0, column=1, sticky=NS)
-labelFuction()
+keyList = ['first_name', 'middle_initial', 'last_name', 'muid', 'date_of_birth', 'preffered display_name', 'personal_email', 'department', 'campus', 'building', 'office_or_room_number', 'employee_type', 'employee_title', 'supervisor', 'start_date', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'existing_telephone_number', 'display_name', 'phonemodel', 'long_distance_code', 'international_calling', 'voice_mail', 'call_forwarding', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'CampusNexus_student_user_to_copy', 'nexus_requirements', 'campusvue_finance', 'shared_folder_access', 'name_of_the_share', 'vpn', 'VPN employee_type', '25live_access', 'computer_status', 'existing_computer_RT_number', 'previous_vdi_user', 'AdditonalNotes']
+
+keyIndex = 0
+for item in keyList:
+    treeview.insert('', 'end', text=item)
+    keyIndex += 1
+
 
 # Add Frame for Button/Status
 buttonFrame = Frame(page1)
-buttonFrame.grid(row=0, column=2, sticky=NW)
+buttonFrame.grid(row=2)
 
-
-Label(buttonFrame, text=' ').grid(row=0, column=4, rowspan=8)
-Label(buttonFrame, text='Paste to Request').grid(row=1, column=4)
-Label(buttonFrame, text='Paste to Details Tab').grid(row=3, column=4)
-Label(buttonFrame, text='Status').grid(row=5, column=4)
-Label(buttonFrame, text='CountDown Here').grid(row=7, column=4)
+pasteFormRequst = Button(buttonFrame, text='Service Request', width=20)
+pasteFormRequst.grid(row=0, column=0)
+pasteFormDetail = Button(buttonFrame, text='Fix Detail Tab', width=20)
+pasteFormDetail.grid(row=0, column=1)
+Label(buttonFrame, text='Status').grid(row=2, columnspan=2)
+Label(buttonFrame, text='CountDown Here').grid(row=3, columnspan=2)
 # pasteFill = Button(page1, text='Form Fill Xtreme')
 # pasteFill.pack(side='bottom')
 # grabClipboard = Button(page1, text='Grab Clipboard')
 # grabClipboard.pack(side='bottom')
 
-# Adds tab 2 of the notebook
-page2 = ttk.Frame(nb)
-nb.add(page2, text='Fix Details')
+# # Adds tab 2 of the notebook
+# page2 = ttk.Frame(nb)
+# nb.add(page2, text='Fix Details')
 
 
-# Adds tab 2 of the notebook
-page3 = ttk.Frame(nb)
-nb.add(page3, text='Guide')
+# # Adds tab 2 of the notebook
+# page3 = ttk.Frame(nb)
+# nb.add(page3, text='Guide')
 
 main.mainloop()

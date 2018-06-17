@@ -14,7 +14,7 @@
 # 'needs_telephone_service': 'Yes', 'using_existing_ext': 'Yes',
 # 'existing_telephone_number': '2240',
 # 'account_number': '1345123',
-'display_name': 'Jim Smithtest',
+# 'display_name': 'Jim Smithtest',
 # 'long_distance_code': 'on',
 # 'international_calling': 'on',
 # 'voice_mail': 'on',
