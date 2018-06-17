@@ -1,0 +1,111 @@
+
+Mercer University
+
+
+Form: IT - New Employee
+Submitted: 2018-06-15 14:18:26
+IP: 10.40.18.217
+
+    RESPONSE SUMMARY
+
+requestor_email
+williams_ma@mercer.edu
+new_mercer_employee
+Yes
+H2_0
+New Employee Information
+muid
+11111111
+first_name
+Jim
+middle_initial
+A
+last_name
+Smithtest
+date_of_birth
+12/30/1982
+personal_email
+williams_ma@mercer.edu
+campus
+Macon
+building
+Tarver
+office_or_room_number
+Help Desk Office
+employee_title
+Help Desk Technician
+department
+Client Support Services
+supervisor
+Brent Walker
+start_date
+6/15/2018
+H2_1
+Telecommunications Requirements
+needs_telephone_service
+Yes
+using_existing_ext
+Yes
+existing_telephone_number
+2240
+account_number
+1345123
+display_name
+Jim Smithtest
+long_distance_code
+on
+international_calling
+on
+voice_mail
+on
+call_forwarding
+on
+H2_2
+Account Requirements
+email_account
+on
+mymercer
+on
+campusvue_finance
+on
+CampusNexus_student
+on
+existing_nexus_user
+Yes
+CampusNexus_student_user_to_copy
+Mark Williams
+nexus_requirements
+blank
+shared_folder_access
+on
+name_of_the_share
+\\merceru.local\it-software
+vpn
+on
+25live_access
+on
+H2_3
+Computer Requirements
+computer_status
+Using existing
+existing_computer_RT_number
+RT1805123
+previous_vdi_user
+blank
+H2_4
+Miscellaneous Information
+additional_notes
+This is not a real employee ticket. Just a form submission with maximum number of fields filled out as a test.
+field_names
+requestor_email,new_mercer_employee,new_mercer_employee,H2_0,muid,first_name,middle_initial,no_middle_initial,last_name,date_of_birth,personal_email,campus,building,office_or_room_number,employee_title,department,supervisor,start_date,H2_1,needs_telephone_service,needs_telephone_service,using_existing_ext,using_existing_ext,phone_type,phone_type,phone_type,phone_type,phone_type,phone_type,existing_telephone_number,account_number,display_name,long_distance_code,international_calling,voice_mail,call_forwarding,H2_2,email_account,mymercer,campusvue_finance,CampusNexus_student,existing_nexus_user,existing_nexus_user,CampusNexus_student_user_to_copy,nexus_requirements,shared_folder_access,name_of_the_share,vpn,25live_access,H2_3,computer_status,existing_computer_RT_number,computer_status,computer_status,computer_status,previous_vdi_user,computer_status,H2_4,additional_notes,*debug,*to,*formname,*redirect,*subject,*bcc,*cc,*honeypot,*replyto
+checkbox_input_names
+no_middle_initial,long_distance_code,international_calling,voice_mail,call_forwarding,email_account,mymercer,campusvue_finance,CampusNexus_student,shared_folder_access,vpn,25live_access
+radio_input_names
+new_mercer_employee,new_mercer_employee,needs_telephone_service,needs_telephone_service,using_existing_ext,using_existing_ext,phone_type,phone_type,phone_type,phone_type,phone_type,phone_type,existing_nexus_user,existing_nexus_user,computer_status,computer_status,computer_status,computer_status,computer_status
+select_names
+campus
+text_input_names
+requestor_email,H2_0,muid,first_name,middle_initial,last_name,date_of_birth,personal_email,building,office_or_room_number,employee_title,department,supervisor,start_date,H2_1,existing_telephone_number,account_number,display_name,H2_2,CampusNexus_student_user_to_copy,name_of_the_share,H2_3,existing_computer_RT_number,previous_vdi_user,H2_4,*honeypot
+textarea_names
+nexus_requirements,additional_notes
+
