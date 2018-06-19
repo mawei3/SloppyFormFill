@@ -139,7 +139,6 @@ pasteFormRequst = Button(buttonFrame, text='Service Request', width=20, highligh
 pasteFormRequst.grid(row=0, column=0)
 pasteFormDetail = Button(buttonFrame, text='Fix Detail Tab', width=20, highlightbackground=bgcolor, command=countdownDetailExe)
 pasteFormDetail.grid(row=0, column=1)
-Label(buttonFrame, text='Status', bg=bgcolor, highlightbackground=bgcolor).grid(row=2, columnspan=2)
 
 
 # # Adds tab 2 of the notebook
