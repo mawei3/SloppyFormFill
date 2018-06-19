@@ -91,3 +91,7 @@ REGEX
 \bGUI[\r\n]+([^\r\n]+)
 \bFirstName(.+)[\n\r] Entire String on line
 (.+)[\n\r] Grabs next line
+
+Create installer
+
+pyinstaller.exe --onefile --windowed app.py

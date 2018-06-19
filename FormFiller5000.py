@@ -82,7 +82,7 @@ def countdownDetail(count):
     # GUI Starts here
 main = Tk()
 main.title('Form Filler 5000')
-main.geometry('480x800')
+main.geometry('460x800')
 
 bgcolor = 'light grey'
 # gives weight to the cells in the grid
