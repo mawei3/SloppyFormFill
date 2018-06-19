@@ -62,7 +62,7 @@ def countdownRequest(count):
 
 
 def countdownDetailExe():
-    countdownRequest(10)
+    countdownDetail(5)
 
 
 def countdownDetail(count):
@@ -73,6 +73,11 @@ def countdownDetail(count):
         count = count - 1
     else:
         Label(buttonFrame, text='      Pasting Now!      ', bg=bgcolor, fg='orange', highlightbackground=bgcolor).grid(row=3, columnspan=2)
+        keyIndex = 0
+        for itemD in keyList2:
+            pyautogui.typewrite(str(emailDict.get(itemD)))
+            pyautogui.press('tab')
+            keyIndex += 1
 
     # GUI Starts here
 main = Tk()
@@ -123,6 +128,7 @@ for item in keyList:
     treeview.insert('', 'end', text=item)
     keyIndex += 1
 
+keyList2 = ['muid', 'first_name', 'middle_initial', 'last_name', 'personal_email', 'date_of_birth', 'start_date', 'campus', 'building', 'office_or_room_number', 'supervisor', 'department', 'NUSEemployee_type', 'employee_title', 'NUSEad_displayname', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'phonemodel', 'display_name', 'long_distance_code', 'international_calling', 'call_forwarding', 'voice_mail', 'NUSEdomain_account', 'NUSEemail_account', '25live_access', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'shared_folder_access', 'name_of_the_share', 'computer_status', 'existing_computer_RT_number', 'NUSEcomputer_setup_ticket', 'NUSEad_account', 'NUSEmercer_email', 'NUSEtemp_password', 'NUSEemail_ad_button', 'AdditonalNotes', 'NUSEvoicemail_pin', 'NUSElong_distance_code', 'new_phone_extension']
 
 # Add Frame for Button/Status
 buttonFrame = Frame(page1)
