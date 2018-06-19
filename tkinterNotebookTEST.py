@@ -5,12 +5,13 @@ from tkinter import ttk
 import pyperclip
 import pyautogui
 import copy
-import time
 
-
+emailDict = {}
 # Function parses email by removing unwanted lines and turns it into dictionary(emailDict)
+
+
 def parseEmail():
-    emailDict = {}
+    global emailDict
     rawEmail = str(pyperclip.paste())
     splitEmail = rawEmail.split(sep='\n')
     splitEmail = [i.strip() for i in splitEmail]
@@ -36,16 +37,42 @@ def parseEmail():
 
 
 # # Define a timer.
-# def countdownRequest(count):
-    #     # change text in label
-    #     label['text'] = count
+def countdownRequestExe():
+    countdownRequest(5)
 
-    #     if count > 0:
-    #         # call countdown again after 1000ms (1s)
-    #         root.after(1000, countdown, count - 1)
 
-    #     label = tk.Label(root)
-    #     label.place(x=35, y=15)
+def countdownRequest(count):
+    if count > 0:
+        # call countdown again after 1000ms (1s)
+        Label(buttonFrame, text='Pasting in ' + str(count) + ' seconds', bg=bgcolor, highlightbackground=bgcolor).grid(row=3, columnspan=2)
+        buttonFrame.after(1000, countdownRequest, count - 1)
+        count = count - 1
+    else:
+        Label(buttonFrame, text='      Pasting Now!      ', bg=bgcolor, fg='orange', highlightbackground=bgcolor).grid(row=3, columnspan=2)
+        keyIndex = 0
+        for item in keyList:
+            pyautogui.typewrite(str(emailDict.get(item)))
+            pyautogui.press('tab')
+            keyIndex += 1
+            # if str(emailDict.get(item)) == 'on':
+            #     pyautogui.press('space')
+            #     pyautogui.press('tab')
+            # else:
+            #     pyautogui.paste(str(emailDict.get(item))
+
+
+def countdownDetailExe():
+    countdownRequest(10)
+
+
+def countdownDetail(count):
+    if count > 0:
+        # call countdown again after 1000ms (1s)
+        Label(buttonFrame, text='Pasting in ' + str(count) + ' seconds', bg=bgcolor, highlightbackground=bgcolor).grid(row=3, columnspan=2)
+        buttonFrame.after(1000, countdownDetail, count - 1)
+        count = count - 1
+    else:
+        Label(buttonFrame, text='      Pasting Now!      ', bg=bgcolor, fg='orange', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
     # GUI Starts here
 main = Tk()
@@ -102,13 +129,12 @@ buttonFrame = Frame(page1)
 buttonFrame.config(bg=bgcolor, highlightbackground=bgcolor)
 buttonFrame.grid(row=2)
 
-pasteFormRequst = Button(buttonFrame, text='Service Request', width=20, highlightbackground=bgcolor)
+pasteFormRequst = Button(buttonFrame, text='Service Request', width=20, highlightbackground=bgcolor, command=countdownRequestExe)
 pasteFormRequst.grid(row=0, column=0)
-pasteFormDetail = Button(buttonFrame, text='Fix Detail Tab', width=20, highlightbackground=bgcolor)
+pasteFormDetail = Button(buttonFrame, text='Fix Detail Tab', width=20, highlightbackground=bgcolor, command=countdownDetailExe)
 pasteFormDetail.grid(row=0, column=1)
 Label(buttonFrame, text='Status', bg=bgcolor, highlightbackground=bgcolor).grid(row=2, columnspan=2)
 
-Label(buttonFrame, text='CountDown Here', bg=bgcolor, highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 # # Adds tab 2 of the notebook
 # page2 = ttk.Frame(nb)
