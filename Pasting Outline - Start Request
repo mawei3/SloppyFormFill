@@ -1,0 +1,30 @@
+Pasting Outline - Start Request
+
+if keylist[item] == preferred_display_name or Employee_type or canvas:
+    pyautogui.keypress(tab)
+    continue
+elif keylist[item] == date_of_birth or start_date:
+    fixAndPasteDate()
+    continue
+elif keylist[item] == telephone_required:
+    if str.lower(emailDist(item)) == yes:
+        paste account number
+        tab
+        paste display name
+        tab
+        if existing_extention == yes:
+            tab
+            paste existing extension
+        else
+            hit spacebar
+            tab
+            paste phone_model
+    if long_distance == yes:
+        hit spacebar
+        tab
+        if international_calling == yes:
+            hit spacebar
+            tab
+        else tab
+
+

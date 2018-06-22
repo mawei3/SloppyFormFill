@@ -81,7 +81,7 @@ def countdownDetail(count):
 
     # GUI Starts here
 main = Tk()
-main.title('Form Filler 5000')
+main.title('Ivanti Trump v0.8')
 main.geometry('460x800')
 
 bgcolor = 'light grey'
