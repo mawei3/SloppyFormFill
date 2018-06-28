@@ -80,57 +80,57 @@ def countdownRequest(count):
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('needs_telephone_service')))
         pyautogui.press('tab')
-        if str.lower(emailDict.get('needs_telephone_service')) == 'yes':  # start telecom rediculusness
+        if str.lower(emailDict.get('needs_telephone_service', '')) == 'yes':  # start telecom rediculusness
             pyautogui.typewrite(str(emailDict.get('account_number')))
             pyautogui.press('tab')
             pyautogui.typewrite(str(emailDict.get('display_name')))
             pyautogui.press('tab')
-            if str.lower(emailDict.get('using_existing_ext')) == 'yes':
+            if str.lower(emailDict.get('using_existing_ext', '')) == 'yes':
                 pyautogui.press('tab')
                 pyautogui.typewrite(str(emailDict.get('existing_telephone_number')))
                 pyautogui.press('tab')
             else:
-                pyautogui.typewrite(str(emailDict.get('phonemodel')))
+                pyautogui.typewrite(str(emailDict.get('phonemodel', '')))
                 pyautogui.press('tab')
-            if str.lower(emailDict.get('long_distance_code')) == 'on':
+            if str.lower(emailDict.get('long_distance_code', '')) == 'on':
                 pyautogui.press('space')
                 pyautogui.press('tab')
-                if str.lower(emailDict.get('international_calling')) == 'on':
+                if str.lower(emailDict.get('international_calling', '')) == 'on':
                     pyautogui.press('space')
                     pyautogui.press('tab')
                 else:
                     pyautogui.press('tab')
             else:
                 pyautogui.press('tab')
-            if str.lower(emailDict.get('voice_mail')) == 'on':
+            if str.lower(emailDict.get('voice_mail', '')) == 'on':
                 pyautogui.press('space')
                 pyautogui.press('tab')
             else:
                 pyautogui.press('tab')
-            if str.lower(emailDict.get('call_forwarding')) == 'on':
+            if str.lower(emailDict.get('call_forwarding', '')) == 'on':
                 pyautogui.press('space')
                 pyautogui.press('tab')
         else:
             pyautogui.press('tab')
         pyautogui.press('tab')  # skip canvas
-        if str.lower(emailDict.get('mymercer')) == 'on':
+        if str.lower(emailDict.get('mymercer', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str.lower(emailDict.get('CampusNexus_student')) == 'on':
+        if str.lower(emailDict.get('CampusNexus_student', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('CampusNexus_student_user_to_copy'))
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str.lower(emailDict.get('campusvue_finance')) == 'on':
+        if str.lower(emailDict.get('campusvue_finance', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str.lower(emailDict.get('shared_folder_access')) == 'on':
+        if str.lower(emailDict.get('shared_folder_access', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('name_of_the_share'))
@@ -138,29 +138,29 @@ def countdownRequest(count):
         else:
             pyautogui.press('tab')
         pyautogui.press('tab')  # SkipVPN
-        if str.lower(emailDict.get('25live_access')) == 'on':
+        if str.lower(emailDict.get('25live_access', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
 
-        if str(emailDict.get('computer_status')) == 'Using existing':
+        if str(emailDict.get('computer_status', '')) == 'Using existing':
             pyautogui.typewrite('using existing computer', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('existing_computer_RT_number'))
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'Using an existing Thin Client (VDI)':
+        elif str(emailDict.get('computer_status', '')) == 'Using an existing Thin Client (VDI)':
             pyautogui.typewrite('Using existing thin client', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('previous_vdi_user'))
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'New computer has been/will be ordered':
+        elif str(emailDict.get('computer_status', '')) == 'New computer has been/will be ordered':
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'No computer required':
+        elif str(emailDict.get('computer_status', '')) == 'No computer required':
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'Thin client has been/will be ordered':
+        elif str(emailDict.get('computer_status', '')) == 'Thin client has been/will be ordered':
             pyautogui.press('tab')
-        pyautogui.typewrite(emailDict.get('additional_notes'))
+        pyautogui.typewrite(emailDict.get('additional_notes', ''))
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 
@@ -180,11 +180,11 @@ def countdownDetail(count):
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('first_name')))
         pyautogui.press('tab')
-        pyautogui.typewrite(str(emailDict.get('middle_initial')))
+        pyautogui.typewrite(str(emailDict.get('middle_initial', '')))
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('last_name')))
         pyautogui.press('tab')
-        pyautogui.typewrite(str(emailDict.get('personal_email')))
+        pyautogui.typewrite(str(emailDict.get('personal_email', '')))
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('date_of_birth')))
         pyautogui.press('tab')
@@ -204,7 +204,7 @@ def countdownDetail(count):
         pyautogui.typewrite(str(emailDict.get('employee_title')))
         pyautogui.press('tab')
         pyautogui.press('tab')  # skip AD display name
-        if str(emailDict.get('needs_telephone_service')) == 'yes':
+        if str(emailDict.get('needs_telephone_service', '')) == 'yes':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(str(emailDict.get('account_number')))
@@ -225,58 +225,57 @@ def countdownDetail(count):
         pyautogui.press('tab')  # skip Domain account
         pyautogui.press('space')  # Email account
         pyautogui.press('tab')
-        if str(emailDict.get('25live_access')) == 'on':
+        if str(emailDict.get('25live_access', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get('canvas')) == 'on':
+        if str(emailDict.get('canvas', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get('mymercer')) == 'on':
+        if str(emailDict.get('mymercer', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get('CampusNexus_student')) == 'on':
+        if str(emailDict.get('CampusNexus_student', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(str(emailDict.get('CampusNexus_student_user_to_copy')))
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get('shared_folder_access')) == 'on':
+        if str(emailDict.get('shared_folder_access', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(str(emailDict.get('name_of_the_share')))
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get('computer_status')) == 'Using existing':
+        if str(emailDict.get('computer_status', '')) == 'Using existing':
             pyautogui.typewrite('using existing computer', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('existing_computer_RT_number'))
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'Using an existing Thin Client (VDI)':
+        elif str(emailDict.get('computer_status', '')) == 'Using an existing Thin Client (VDI)':
             pyautogui.typewrite('Using existing thin client', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('previous_vdi_user'))
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'New computer has been/will be ordered':
+        elif str(emailDict.get('computer_status', '')) == 'New computer has been/will be ordered':
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'No computer required':
+        elif str(emailDict.get('computer_status', '')) == 'No computer required':
             pyautogui.press('tab')
-        elif str(emailDict.get('computer_status')) == 'Thin client has been/will be ordered':
+        elif str(emailDict.get('computer_status', '')) == 'Thin client has been/will be ordered':
             pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
-        pyautogui.press('tab')
-        pyautogui.typewrite('additional_notes')
+        pyautogui.typewrite(str(emailDict.get('additional_notes', '')))
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 
