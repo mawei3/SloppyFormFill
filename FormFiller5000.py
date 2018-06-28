@@ -160,7 +160,8 @@ def countdownRequest(count):
             pyautogui.press('tab')
         elif str(emailDict.get('computer_status')) == 'Thin client has been/will be ordered':
             pyautogui.press('tab')
-        pyautogui.typewrite(emailDict.get('AdditonalNotes'))
+        pyautogui.typewrite(emailDict.get('additional_notes'))
+        Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 
 def countdownDetailExe():
@@ -183,6 +184,8 @@ def countdownDetail(count):
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('last_name')))
         pyautogui.press('tab')
+        pyautogui.typewrite(str(emailDict.get('personal_email')))
+        pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('date_of_birth')))
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('start_date')))
@@ -201,7 +204,7 @@ def countdownDetail(count):
         pyautogui.typewrite(str(emailDict.get('employee_title')))
         pyautogui.press('tab')
         pyautogui.press('tab')  # skip AD display name
-        if str(emailDict.get(needs_telephone_service)) == 'yes':
+        if str(emailDict.get('needs_telephone_service')) == 'yes':
             pyautogui.press('space')
             pyautogui.press('tab')
             pyautogui.typewrite(str(emailDict.get('account_number')))
@@ -237,17 +240,17 @@ def countdownDetail(count):
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get(CampusNexus_student)) == 'on':
+        if str(emailDict.get('CampusNexus_student')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
-            pyautogui.typewrite(str(emailDict.get(CampusNexus_student_user_to_copy)))
+            pyautogui.typewrite(str(emailDict.get('CampusNexus_student_user_to_copy')))
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
-        if str(emailDict.get(shared_folder_access)) == 'on':
+        if str(emailDict.get('shared_folder_access')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
-            pyautogui.typewrite(str(emailDict.get(name_of_the_share)))
+            pyautogui.typewrite(str(emailDict.get('name_of_the_share')))
             pyautogui.press('tab')
         else:
             pyautogui.press('tab')
@@ -273,6 +276,8 @@ def countdownDetail(count):
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.press('tab')
+        pyautogui.typewrite('additional_notes')
+        Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 
 
@@ -318,14 +323,14 @@ treeview.config(columns=('values'))
 treeview.column('values', width=230)
 treeview.heading('values', text='Values')
 
-keyList = ['first_name', 'middle_initial', 'last_name', 'muid', 'date_of_birth', 'preffered_display_name', 'personal_email', 'department', 'campus', 'building', 'office_or_room_number', 'employee_title', 'supervisor', 'start_date', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'existing_telephone_number', 'display_name', 'phonemodel', 'long_distance_code', 'international_calling', 'voice_mail', 'call_forwarding', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'CampusNexus_student_user_to_copy', 'nexus_requirements', 'campusvue_finance', 'shared_folder_access', 'name_of_the_share', 'vpn', 'VPN employee_type', '25live_access', 'computer_status', 'existing_computer_RT_number', 'previous_vdi_user', 'AdditonalNotes']
+keyList = ['first_name', 'middle_initial', 'last_name', 'muid', 'date_of_birth', 'preffered_display_name', 'personal_email', 'department', 'campus', 'building', 'office_or_room_number', 'employee_title', 'supervisor', 'start_date', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'existing_telephone_number', 'display_name', 'phonemodel', 'long_distance_code', 'international_calling', 'voice_mail', 'call_forwarding', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'CampusNexus_student_user_to_copy', 'nexus_requirements', 'campusvue_finance', 'shared_folder_access', 'name_of_the_share', 'vpn', 'VPN employee_type', '25live_access', 'computer_status', 'existing_computer_RT_number', 'previous_vdi_user', 'additional_notes']
 
 keyIndex = 0
 for item in keyList:
     treeview.insert('', 'end', text=item)
     keyIndex += 1
 
-keyList2 = ['muid', 'first_name', 'middle_initial', 'last_name', 'personal_email', 'date_of_birth', 'start_date', 'campus', 'building', 'office_or_room_number', 'supervisor', 'department', 'NUSEemployee_type', 'employee_title', 'NUSEad_displayname', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'phonemodel', 'display_name', 'long_distance_code', 'international_calling', 'call_forwarding', 'voice_mail', 'NUSEdomain_account', 'NUSEemail_account', '25live_access', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'shared_folder_access', 'name_of_the_share', 'computer_status', 'existing_computer_RT_number', 'NUSEcomputer_setup_ticket', 'NUSEad_account', 'NUSEmercer_email', 'NUSEtemp_password', 'NUSEemail_ad_button', 'AdditonalNotes', 'NUSEvoicemail_pin', 'NUSElong_distance_code', 'new_phone_extension']
+keyList2 = ['muid', 'first_name', 'middle_initial', 'last_name', 'personal_email', 'date_of_birth', 'start_date', 'campus', 'building', 'office_or_room_number', 'supervisor', 'department', 'NUSEemployee_type', 'employee_title', 'NUSEad_displayname', 'needs_telephone_service', 'account_number', 'using_existing_ext', 'phonemodel', 'display_name', 'long_distance_code', 'international_calling', 'call_forwarding', 'voice_mail', 'NUSEdomain_account', 'NUSEemail_account', '25live_access', 'canvas', 'mymercer', 'CampusNexus_student', 'existing_nexus_user', 'shared_folder_access', 'name_of_the_share', 'computer_status', 'existing_computer_RT_number', 'NUSEcomputer_setup_ticket', 'NUSEad_account', 'NUSEmercer_email', 'NUSEtemp_password', 'NUSEemail_ad_button', 'additional_notes', 'NUSEvoicemail_pin', 'NUSElong_distance_code', 'new_phone_extension']
 
 # Add Frame for Button/Status
 buttonFrame = Frame(page1)
