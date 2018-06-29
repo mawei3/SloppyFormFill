@@ -279,18 +279,18 @@ def countdownDetail(count):
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
 
-
-    # GUI Starts here
+# GUI Starts here
 main = Tk()
 main.title('Ivanti Trump v1.0')
-main.geometry('460x800')
+main.resizable(0, 0)
+main.geometry('465x800')
+s = ttk.Style()
+s.theme_use('classic')
 
 bgcolor = 'light grey'
 # gives weight to the cells in the grid
 rows = 0
 while rows < 80:
-    s = ttk.Style()
-    s.theme_use('default')
     main.rowconfigure(rows, weight=1)
     main.columnconfigure(rows, weight=1)
     rows += 1
@@ -301,15 +301,14 @@ nb.grid(row=0, column=0, columnspan=85, rowspan=80, sticky='NESW')
 
 # Adds tab 1 of the notebook
 page1 = ttk.Frame(nb)
-# page1.config(bg=bgcolor, highlightbackground=bgcolor)
 nb.add(page1, text='New Employee')
 
 # Create Button To Copy From Clipboard
 pullDataFrame = Frame(page1)
 pullDataFrame.config(bg=bgcolor)
 pullDataFrame.grid(row=0, sticky='NESW')
-fillFormButton = Button(pullDataFrame, text='Copy From Clipboard', width=46, bg=bgcolor, highlightbackground=bgcolor, command=parseEmail)
-fillFormButton.grid(row=0, sticky='NESW')
+fillFormButton = Button(pullDataFrame, text='Copy From Clipboard', width=48, bg=bgcolor, highlightbackground=bgcolor, command=parseEmail)
+fillFormButton.grid(row=0)
 
 
 # Create Treeview for keys and values
