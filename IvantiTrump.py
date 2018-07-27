@@ -1,5 +1,5 @@
 #! python3
-# pyinstaller --onefile --windowed --name IvantiTrump --icon=IvantiTrump.icns IvantiTump.py
+# pyinstaller --onefile --windowed --name IvantiTrump --icon=IvantiTrump.icns IvantiTrump.py
 
 from tkinter import *
 from tkinter import ttk
