@@ -1,4 +1,5 @@
 #! python3
+# pyinstaller --onefile --windowed --name IvantiTrump --icon=IvantiTrump.icns IvantiTump.py
 
 from tkinter import *
 from tkinter import ttk
@@ -52,8 +53,11 @@ def countdownRequest(count):
         Label(buttonFrame, text='      Pasting Now!      ', bg=bgcolor, fg='orange', highlightbackground=bgcolor).grid(row=3, columnspan=2)
         pyautogui.typewrite(str(emailDict.get('first_name')))
         pyautogui.press('tab')
-        pyautogui.typewrite(str(emailDict.get('middle_initial')))
-        pyautogui.press('tab')
+        if str(emailDict.get('no_middle_initial', '')) == 'on':
+            pyautogui.press('tab')
+        else:
+            pyautogui.typewrite(str(emailDict.get('middle_initial')))
+            pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('last_name')))
         pyautogui.press('tab')
         pyautogui.typewrite(str(emailDict.get('muid')))
@@ -110,9 +114,10 @@ def countdownRequest(count):
             if str.lower(emailDict.get('call_forwarding', '')) == 'on':
                 pyautogui.press('space')
                 pyautogui.press('tab')
-        else:
-            pyautogui.press('tab')
+        # else:
+        #     pyautogui.press('tab')
         pyautogui.press('tab')  # skip canvas
+        buttonFrame.after(500)
         if str.lower(emailDict.get('mymercer', '')) == 'on':
             pyautogui.press('space')
             pyautogui.press('tab')
@@ -148,18 +153,17 @@ def countdownRequest(count):
             pyautogui.typewrite('using existing computer', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('existing_computer_RT_number'))
-            pyautogui.press('tab')
         elif str(emailDict.get('computer_status', '')) == 'Using an existing Thin Client (VDI)':
             pyautogui.typewrite('Using existing thin client', interval=0.5)
             pyautogui.press('tab')
             pyautogui.typewrite(emailDict.get('previous_vdi_user'))
-            pyautogui.press('tab')
-        elif str(emailDict.get('computer_status', '')) == 'New computer has been/will be ordered':
-            pyautogui.press('tab')
-        elif str(emailDict.get('computer_status', '')) == 'No computer required':
-            pyautogui.press('tab')
-        elif str(emailDict.get('computer_status', '')) == 'Thin client has been/will be ordered':
-            pyautogui.press('tab')
+        elif str(emailDict.get('computer_status', '')) == 'Ordered new':
+            pyautogui.typewrite('New computer', interval=0.5)
+        elif str(emailDict.get('computer_status', '')) == 'Not using computer':
+            pyautogui.typewrite('No computer required', interval=0.5)
+        elif str(emailDict.get('computer_status', '')) == 'Using new VDI':
+            pyautogui.typewrite('Thin', interval=0.5)
+        pyautogui.press('tab')
         pyautogui.typewrite(emailDict.get('additional_notes', ''))
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
@@ -281,7 +285,7 @@ def countdownDetail(count):
 
 # GUI Starts here
 main = Tk()
-main.title('Ivanti Trump v1.0')
+main.title('Ivanti Trump v1.0.2')
 main.resizable(0, 0)
 main.geometry('465x800')
 s = ttk.Style()
