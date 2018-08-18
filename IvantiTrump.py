@@ -346,9 +346,45 @@ pasteFormDetail.grid(row=0, column=1)
 
 
 # # Adds tab 2 of the notebook
-# page2 = ttk.Frame(nb)
-# nb.add(page2, text='Fix Details')
+page2 = ttk.Frame(nb)
+nb.add(page2, text='ListServ')
 
+# Email Address Subscribe frame
+emailAddressSubFrame = Frame(page2)
+emailAddressSubFrame.config(bg=bgcolor)
+emailAddressSubFrame.grid(row=0, sticky='NSEW')
+addressSubLabel = Label(emailAddressSubFrame, text='Subscribe these Addresses:', bg=bgcolor, highlightbackground=bgcolor)
+addressSubLabel.grid(row=0)
+addressSubListBox = Listbox(emailAddressSubFrame, width=35, highlightbackground=bgcolor)
+addressSubListBox.grid(row=1, column=0)
+editAddressesSubButton = Button(emailAddressSubFrame, text='Edit', width=10, bg=bgcolor, highlightbackground=bgcolor)
+editAddressesSubButton.grid(row=1, column=1)
+# Email Address UnSubscribe frame
+emailAddressUnSFrame = Frame(page2)
+emailAddressUnSFrame.config(bg=bgcolor)
+emailAddressUnSFrame.grid(row=1)
+emailAddressUnSLabel = Label(emailAddressUnSFrame, text="UnSubscribe these Addresses:", bg=bgcolor, highlightbackground=bgcolor)
+emailAddressUnSLabel.grid(row=0)
+addressUnSListBox = Listbox(emailAddressUnSFrame, width=35, highlightbackground=bgcolor)
+addressUnSListBox.grid(row=1, column=0)
+editAddressesUnSButton = Button(emailAddressUnSFrame, text='Edit', width=10, bg=bgcolor, highlightbackground=bgcolor)
+editAddressesUnSButton.grid(row=1, column=1)
+# ListServ Selection Frame
+listServFrame = Frame(page2)
+listServFrame.config(bg=bgcolor)
+listServFrame.grid(row=2)
+listServLabel = Label(listServFrame, text="Selected Listservs:", bg=bgcolor, highlightbackground=bgcolor)
+listServLabel.grid(row=0)
+listServListBox = Listbox(listServFrame, width=35, highlightbackground=bgcolor)
+listServListBox.grid(row=1)
+listServEditButton = Button(listServFrame, text="Pick ListServs:", bg=bgcolor, highlightbackground=bgcolor)
+listServEditButton.grid(row=1, column=1)
+# Generate Email0 Button Frame
+generateListServFrame = Frame(page2)
+generateListServFrame.config(bg=bgcolor)
+generateListServFrame.grid(row=3, sticky='NSEW')
+generateListServButton = Button(generateListServFrame, text='Generate Email', width=45, highlightbackground=bgcolor)
+generateListServButton.grid(row=0)
 
 # # Adds tab 2 of the notebook
 # page3 = ttk.Frame(nb)
