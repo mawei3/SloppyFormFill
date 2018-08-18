@@ -282,10 +282,51 @@ def countdownDetail(count):
         pyautogui.typewrite(str(emailDict.get('additional_notes', '')))
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
+# Pop New Window for addressSubListBox Selection
+
+
+def add_addressSubList():
+    subListWindow = Toplevel(main)
+    subListWindow.title('Subscribe these Addresses:')
+    subListWindow.resizable(0, 0)
+    subListWindow.geometry('465x300')
+    subListWindow.config(bg=bgcolor)
+    subListFrame = Frame(subListWindow)
+    subListFrame.grid(row=0, sticky='NESW')
+    subListLabel1 = Label(subListWindow, text='Add this Address:')
+    subListLabel1.grid(row=0, columnspan=2)
+    subListEntry = Entry(subListWindow)
+    subListEntry.grid(row=1, columnspan=2)
+    subListListbox = Listbox(subListWindow)
+    subListListbox.grid(row=3)
+
+
+# Pop New Window for addressUnSListBox Selection
+
+
+def add_addressUnSList():
+    unsListWindow = Toplevel(main)
+    unsListWindow.title('UNSubscribe these Addresses:')
+    unsListWindow.resizable(0, 0)
+    unsListWindow.geometry('465x300')
+    unsListWindow.config(bg=bgcolor)
+
+# Pop New Window for listServListBox Selection
+
+
+def add_addressListServ():
+    subListWindow = Toplevel(main)
+    subListWindow.title('Select ListServs:')
+    subListWindow.resizable(0, 0)
+    subListWindow.geometry('465x600')
+    subListWindow.config(bg=bgcolor)
+
+# Generate Email Function
+
 
 # GUI Starts here
 main = Tk()
-main.title('Ivanti Trump v1.0.2')
+main.title('Ivanti Trump v1.1.0')
 main.resizable(0, 0)
 main.geometry('465x800')
 s = ttk.Style()
@@ -355,10 +396,14 @@ emailAddressSubFrame.config(bg=bgcolor)
 emailAddressSubFrame.grid(row=0, sticky='NSEW')
 addressSubLabel = Label(emailAddressSubFrame, text='Subscribe these Addresses:', bg=bgcolor, highlightbackground=bgcolor)
 addressSubLabel.grid(row=0)
+subListEntry = Entry(emailAddressSubFrame)
+subListEntry.grid(row=1, column=0)
+subListEntryButton = Button(emailAddressSubFrame)
+subListEntryButton.grid(row=1, column=1)
 addressSubListBox = Listbox(emailAddressSubFrame, width=35, highlightbackground=bgcolor)
-addressSubListBox.grid(row=1, column=0)
-editAddressesSubButton = Button(emailAddressSubFrame, text='Edit', width=10, bg=bgcolor, highlightbackground=bgcolor)
-editAddressesSubButton.grid(row=1, column=1)
+addressSubListBox.grid(row=2, column=0)
+editAddressesSubButton = Button(emailAddressSubFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressSubList)
+editAddressesSubButton.grid(row=2, column=1)
 # Email Address UnSubscribe frame
 emailAddressUnSFrame = Frame(page2)
 emailAddressUnSFrame.config(bg=bgcolor)
@@ -367,7 +412,7 @@ emailAddressUnSLabel = Label(emailAddressUnSFrame, text="UnSubscribe these Addre
 emailAddressUnSLabel.grid(row=0)
 addressUnSListBox = Listbox(emailAddressUnSFrame, width=35, highlightbackground=bgcolor)
 addressUnSListBox.grid(row=1, column=0)
-editAddressesUnSButton = Button(emailAddressUnSFrame, text='Edit', width=10, bg=bgcolor, highlightbackground=bgcolor)
+editAddressesUnSButton = Button(emailAddressUnSFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressUnSList)
 editAddressesUnSButton.grid(row=1, column=1)
 # ListServ Selection Frame
 listServFrame = Frame(page2)
@@ -377,7 +422,7 @@ listServLabel = Label(listServFrame, text="Selected Listservs:", bg=bgcolor, hig
 listServLabel.grid(row=0)
 listServListBox = Listbox(listServFrame, width=35, highlightbackground=bgcolor)
 listServListBox.grid(row=1)
-listServEditButton = Button(listServFrame, text="Pick ListServs:", bg=bgcolor, highlightbackground=bgcolor)
+listServEditButton = Button(listServFrame, text="Delete", bg=bgcolor, highlightbackground=bgcolor, command=add_addressListServ)
 listServEditButton.grid(row=1, column=1)
 # Generate Email0 Button Frame
 generateListServFrame = Frame(page2)
