@@ -6,6 +6,7 @@ from tkinter import ttk
 import pyperclip
 import pyautogui
 import copy
+import webbrowser  # use webbrowser to open outlook mailto for listservEmailGenerator
 
 emailDict = {}
 # Function parses email by removing unwanted lines and turns it into dictionary(emailDict)
@@ -282,46 +283,41 @@ def countdownDetail(count):
         pyautogui.typewrite(str(emailDict.get('additional_notes', '')))
         Label(buttonFrame, text='          Done!          ', bg=bgcolor, fg='green', highlightbackground=bgcolor).grid(row=3, columnspan=2)
 
-# Pop New Window for addressSubListBox Selection
+# add items for Listboxes on page2
 
 
 def add_addressSubList():
-    subListWindow = Toplevel(main)
-    subListWindow.title('Subscribe these Addresses:')
-    subListWindow.resizable(0, 0)
-    subListWindow.geometry('465x300')
-    subListWindow.config(bg=bgcolor)
-    subListFrame = Frame(subListWindow)
-    subListFrame.grid(row=0, sticky='NESW')
-    subListLabel1 = Label(subListWindow, text='Add this Address:')
-    subListLabel1.grid(row=0, columnspan=2)
-    subListEntry = Entry(subListWindow)
-    subListEntry.grid(row=1, columnspan=2)
-    subListListbox = Listbox(subListWindow)
-    subListListbox.grid(row=3)
-
-
-# Pop New Window for addressUnSListBox Selection
+    grabSubEntry = subListEntry.get()
+    addressSubListBox.insert(END, grabSubEntry)
 
 
 def add_addressUnSList():
-    unsListWindow = Toplevel(main)
-    unsListWindow.title('UNSubscribe these Addresses:')
-    unsListWindow.resizable(0, 0)
-    unsListWindow.geometry('465x300')
-    unsListWindow.config(bg=bgcolor)
-
-# Pop New Window for listServListBox Selection
+    grabUnSEntry = unsListEntry.get()
+    addressUnSListBox.insert(END, grabUnSEntry)
 
 
 def add_addressListServ():
-    subListWindow = Toplevel(main)
-    subListWindow.title('Select ListServs:')
-    subListWindow.resizable(0, 0)
-    subListWindow.geometry('465x600')
-    subListWindow.config(bg=bgcolor)
+    grabListServ = listServEntry.get()
+    listServListBox.insert(END, grabListServ)
+
+
+def pickListServ():
+    pass
 
 # Generate Email Function
+
+
+def createListServEmail():
+    emailRecipient = 'mailserv@mercer.edu'
+    emailSubject = ''
+    emailBody = 'This is the body'
+
+    # with open('body.txt', 'r') as b:
+    #     emailBody = b.read()
+
+    # emailBody = emailBody.replace(' ', '%20')
+
+    webbrowser.open('mailto:?to=' + emailRecipient + '&subject=' + emailSubject + '&body=' + emailBody, new=1)
 
 
 # GUI Starts here
@@ -396,40 +392,52 @@ emailAddressSubFrame.config(bg=bgcolor)
 emailAddressSubFrame.grid(row=0, sticky='NSEW')
 addressSubLabel = Label(emailAddressSubFrame, text='Subscribe these Addresses:', bg=bgcolor, highlightbackground=bgcolor)
 addressSubLabel.grid(row=0)
-subListEntry = Entry(emailAddressSubFrame)
+subListEntry = Entry(emailAddressSubFrame, width=34, highlightbackground=bgcolor)
 subListEntry.grid(row=1, column=0)
-subListEntryButton = Button(emailAddressSubFrame)
+subListEntryButton = Button(emailAddressSubFrame, text='Add', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressSubList)
 subListEntryButton.grid(row=1, column=1)
 addressSubListBox = Listbox(emailAddressSubFrame, width=35, highlightbackground=bgcolor)
 addressSubListBox.grid(row=2, column=0)
-editAddressesSubButton = Button(emailAddressSubFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressSubList)
-editAddressesSubButton.grid(row=2, column=1)
+editAddressesSubButton = Button(emailAddressSubFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=lambda addressSubListBox=addressSubListBox: addressSubListBox.delete(ANCHOR))
+editAddressesSubButton.grid(row=2, column=1, sticky='N')
 # Email Address UnSubscribe frame
 emailAddressUnSFrame = Frame(page2)
 emailAddressUnSFrame.config(bg=bgcolor)
 emailAddressUnSFrame.grid(row=1)
 emailAddressUnSLabel = Label(emailAddressUnSFrame, text="UnSubscribe these Addresses:", bg=bgcolor, highlightbackground=bgcolor)
 emailAddressUnSLabel.grid(row=0)
+unsListEntry = Entry(emailAddressUnSFrame, width=34, highlightbackground=bgcolor)
+unsListEntry.grid(row=1, column=0)
+unsListEntryButton = Button(emailAddressUnSFrame, text='Add', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressUnSList)
+unsListEntryButton.grid(row=1, column=1)
 addressUnSListBox = Listbox(emailAddressUnSFrame, width=35, highlightbackground=bgcolor)
-addressUnSListBox.grid(row=1, column=0)
-editAddressesUnSButton = Button(emailAddressUnSFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressUnSList)
-editAddressesUnSButton.grid(row=1, column=1)
+addressUnSListBox.grid(row=2, column=0)
+editAddressesUnSButton = Button(emailAddressUnSFrame, text='Delete', width=10, bg=bgcolor, highlightbackground=bgcolor, command=lambda addressUnSListBox=addressUnSListBox: addressUnSListBox.delete(ANCHOR))
+editAddressesUnSButton.grid(row=2, column=1, sticky='N')
 # ListServ Selection Frame
 listServFrame = Frame(page2)
 listServFrame.config(bg=bgcolor)
 listServFrame.grid(row=2)
 listServLabel = Label(listServFrame, text="Selected Listservs:", bg=bgcolor, highlightbackground=bgcolor)
 listServLabel.grid(row=0)
+listServEntry = Entry(listServFrame, width=34, highlightbackground=bgcolor)
+listServEntry.grid(row=1, column=0)
+listServEntryButton = Button(listServFrame, text='Add', width=10, bg=bgcolor, highlightbackground=bgcolor, command=add_addressListServ)
+listServEntryButton.grid(row=1, column=1)
 listServListBox = Listbox(listServFrame, width=35, highlightbackground=bgcolor)
-listServListBox.grid(row=1)
-listServEditButton = Button(listServFrame, text="Delete", bg=bgcolor, highlightbackground=bgcolor, command=add_addressListServ)
-listServEditButton.grid(row=1, column=1)
+listServListBox.grid(row=2, rowspan=2)
+listServEditButton = Button(listServFrame, text="Delete", width=10, bg=bgcolor, highlightbackground=bgcolor, command=lambda listServListBox=listServListBox: listServListBox.delete(ANCHOR))
+listServEditButton.grid(row=2, column=1, sticky='N')
+listServPickButton = Button(listServFrame, text='Pick List', width=10, bg=bgcolor, highlightbackground=bgcolor, command=pickListServ)
+listServPickButton.grid(row=3, column=1, sticky='N')
 # Generate Email0 Button Frame
 generateListServFrame = Frame(page2)
 generateListServFrame.config(bg=bgcolor)
 generateListServFrame.grid(row=3, sticky='NSEW')
-generateListServButton = Button(generateListServFrame, text='Generate Email', width=45, highlightbackground=bgcolor)
+generateListServButton = Button(generateListServFrame, text='Generate Email', width=45, highlightbackground=bgcolor, command=createListServEmail)
 generateListServButton.grid(row=0)
+clearAllListBoxesButton = Button(generateListServFrame, text='!!! Start Over !!!', width=45, fg="red", highlightbackground=bgcolor)
+clearAllListBoxesButton.grid(row=1, sticky='S')
 
 # # Adds tab 2 of the notebook
 # page3 = ttk.Frame(nb)
