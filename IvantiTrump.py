@@ -308,16 +308,73 @@ def pickListServ():
 
 
 def createListServEmail():
+    emailBody = ''
+    # i = 0
+    # j = 0
+    # k = 0
+    # m = 0
+    listServListBoxItems = []
+    addressSubListBoxItems = []
+    addressUnSListBoxItems = []
+    listServIndex = 0
+    listServSize = listServListBox.size()
+    while listServSize > 0:
+        listServListBoxItems.append(listServListBox.get(listServIndex))
+        listServSize -= 1
+        listServIndex += 1
+    addressSubIndex = 0
+    addressSubSize = addressSubListBox.size()
+    while addressSubSize > 0:
+        addressSubListBoxItems.append(addressSubListBox.get(addressSubIndex))
+        addressSubSize -= 1
+        addressSubIndex += 1
+    addressUnSIndex = 0
+    addressUnSSize = addressUnSListBox.size()
+    while addressUnSSize > 0:
+        addressUnSListBoxItems.append(addressUnSListBox.get(addressUnSIndex))
+        addressUnSSize -= 1
+        addressUnSIndex += 1
+
+    print(listServListBoxItems)
+    print(addressSubListBoxItems)
+    print(addressUnSListBoxItems)
+    listServIndex = 0
+    addressSubIndex = 0
+    addressUnSIndex = 0
+    for i in listServListBoxItems:
+        for j in addressSubListBoxItems:
+            emailBody = emailBody + 'Subscribe%20' + listServListBoxItems[listServIndex] + '%20' + addressSubListBoxItems[addressSubIndex] + '%0d'
+            if addressSubIndex == addressSubListBox.size():
+                pass
+            else:
+                addressSubIndex += 1
+        if listServIndex == listServListBox.size():
+            pass
+        else:
+            listServIndex += 1
+
+    listServIndex = 0
+    for k in listServListBoxItems:
+        for l in addressUnSListBoxItems:
+            emailBody = emailBody + 'Unsubscribe%20' + listServListBoxItems[listServIndex] + '%20' + addressUnSListBoxItems[addressUnSIndex] + '%0d'
+            if addressUnSIndex == addressUnSListBox.size():
+                pass
+            else:
+                addressSubIndex += 1
+        if listServIndex == listServListBox.size():
+            pass
+        else:
+            listServIndex += 1
+
     emailRecipient = 'mailserv@mercer.edu'
     emailSubject = ''
-    emailBody = 'This is the body'
 
     # with open('body.txt', 'r') as b:
     #     emailBody = b.read()
 
     # emailBody = emailBody.replace(' ', '%20')
 
-    webbrowser.open('mailto:?to=' + emailRecipient + '&subject=' + emailSubject + '&body=' + emailBody, new=1)
+    webbrowser.open('mailto:?Content-type=text/plain&to=' + emailRecipient + '&subject=' + emailSubject + '&body=' + emailBody, new=1)
 
 
 # GUI Starts here
