@@ -335,44 +335,17 @@ def createListServEmail():
         addressUnSSize -= 1
         addressUnSIndex += 1
 
-    print(listServListBoxItems)
-    print(addressSubListBoxItems)
-    print(addressUnSListBoxItems)
-    listServIndex = 0
-    addressSubIndex = 0
-    addressUnSIndex = 0
     for i in listServListBoxItems:
         for j in addressSubListBoxItems:
-            emailBody = emailBody + 'Subscribe%20' + listServListBoxItems[listServIndex] + '%20' + addressSubListBoxItems[addressSubIndex] + '%0d'
-            if addressSubIndex == addressSubListBox.size():
-                pass
-            else:
-                addressSubIndex += 1
-        if listServIndex == listServListBox.size():
-            pass
-        else:
-            listServIndex += 1
+            emailBody = emailBody + 'Subscribe%20' + i + '%20' + j + '%0d'
 
     listServIndex = 0
     for k in listServListBoxItems:
         for l in addressUnSListBoxItems:
-            emailBody = emailBody + 'Unsubscribe%20' + listServListBoxItems[listServIndex] + '%20' + addressUnSListBoxItems[addressUnSIndex] + '%0d'
-            if addressUnSIndex == addressUnSListBox.size():
-                pass
-            else:
-                addressSubIndex += 1
-        if listServIndex == listServListBox.size():
-            pass
-        else:
-            listServIndex += 1
+            emailBody = emailBody + 'Unsubscribe%20' + k + '%20' + l + '%0d'
 
     emailRecipient = 'mailserv@mercer.edu'
     emailSubject = ''
-
-    # with open('body.txt', 'r') as b:
-    #     emailBody = b.read()
-
-    # emailBody = emailBody.replace(' ', '%20')
 
     webbrowser.open('mailto:?Content-type=text/plain&to=' + emailRecipient + '&subject=' + emailSubject + '&body=' + emailBody, new=1)
 
